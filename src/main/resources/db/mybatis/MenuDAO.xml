@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.westee.cake.dao.MenuDAO">
-    <resultMap id="BaseResultMap" type="com.westee.cake.entity.Menu">
+<mapper namespace="com.westee.sales.dao.MenuDAO">
+    <resultMap id="BaseResultMap" type="com.westee.sales.entity.Menu">
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="parent_id" jdbcType="INTEGER" property="parentId" />
         <result column="parent_ids" jdbcType="VARCHAR" property="parentIds" />

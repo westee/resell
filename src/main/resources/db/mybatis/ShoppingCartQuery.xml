@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.westee.cake.dao.ShoppingCartQueryMapper">
+<mapper namespace="com.westee.sales.dao.ShoppingCartQueryMapper">
     <select id="countShopsInUserShoppingCart" resultType="int" parameterType="long">
         select COUNT(distinct  SHOPPING_CART.SHOP_ID) from SHOPPING_CART where USER_ID = #{userId} and STATUS = 'ok'
     </select>
 
-    <resultMap id="getShoppingCartResultMap" type="com.westee.cake.entity.ShoppingCartData">
-        <association property="shop" javaType="com.westee.cake.generate.Shop">
+    <resultMap id="getShoppingCartResultMap" type="com.westee.sales.entity.ShoppingCartData">
+        <association property="shop" javaType="com.westee.sales.generate.Shop">
             <id property="id" column="SHOP_ID"/>
             <result property="name" column="SHOP_NAME"/>
             <result property="description" column="SHOP_DESCRIPTION"/>
@@ -15,7 +15,7 @@
             <result property="createdAt" column="SHOP_CREATED_AT"/>
             <result property="updatedAt" column="SHOP_UPDATED_AT"/>
         </association>
-        <collection property="goods" ofType="com.westee.cake.entity.ShoppingCartGoods" javaType="java.util.List">
+        <collection property="goods" ofType="com.westee.sales.entity.ShoppingCartGoods" javaType="java.util.List">
             <id property="id" column="GOODS_ID"/>
             <result property="name" column="GOODS_NAME"/>
             <result property="shoppingCartId" column="SHOPPING_CART_ID"/>
