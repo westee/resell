@@ -15,7 +15,6 @@ import org.flywaydb.core.api.configuration.ClassicConfiguration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
@@ -165,12 +164,14 @@ public class AbstractIntegrationTest {
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 
         HttpEntity<Object> requestEntity = new HttpEntity<>(body, httpHeaders);
-
-        ResponseEntity<String> exchange = restTemplate.exchange(getUrl(apiName), method, requestEntity, String.class);
-        exchange.getBody();
-        exchange.getStatusCode();
-        exchange.getHeaders();
-        return exchange;
+        ResponseEntity<String> exchange = null;
+//        try {
+            exchange = restTemplate.exchange(getUrl(apiName), method, requestEntity, String.class);
+            return exchange;
+//        } catch (HttpClientErrorException e) {
+//            ResponseEntity<String> stringResponseEntity = new ResponseEntity<String>(e.getStatusCode());
+//            return stringResponseEntity;
+//        }
     }
 
 
